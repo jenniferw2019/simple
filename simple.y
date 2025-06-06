@@ -587,7 +587,6 @@ relational_expr:
          | relational_expr GREATEQUAL additive_expr {
                 fprintf(fasm,"\n\t# >=\n");
 
-	       	/************* my code ************/
                 if (top<=nregStk) { //change from < to <=
 		  fprintf(fasm, "\tcmpq %%%s,%%%s\n",
                                 regStk[top-1], regStk[top-2]);
@@ -1112,7 +1111,7 @@ case_item:
 
 jump_statement:
          CONTINUE SEMICOLON {
-	   /********** my code **********/
+	
 	   if(strcmp(loop_name, "while") == 0) {
 	     fprintf(fasm, "\tjmp while_start_%d\n", nlabel-1); 
 	   }
